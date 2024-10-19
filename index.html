@@ -5,87 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-<header>
-    <h1>DHEERAJ REDDY INUGALA</h1>
+<!-- Header Section -->
+<header class="bg-blue-600 text-white py-6 mb-10">
+    <div class="container mx-auto text-center">
+        <h1 class="text-4xl font-bold animate-fade-in">[Your Name]</h1>
+        <p class="text-lg mt-2">Welcome to My Portfolio</p>
+    </div>
 </header>
 
-<div class="container">
+<!-- Main Content Container -->
+<div class="container mx-auto px-4">
+
     <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hi, I'm <strong>[Your Name]</strong>, a passionate [Your Profession or Role].
-            I'm currently working as a [Your Job Role] at [Your Company or School].
-            I love working on [technologies or areas of interest].
+    <section id="about" class="mb-12 p-8 bg-white rounded-lg shadow-md animate-fade-in-up">
+        <h2 class="text-3xl font-semibold text-blue-600 mb-4">About Me</h2>
+        <p class="text-lg leading-relaxed">
+            Hi, I'm <strong>[Your Name]</strong>, a passionate <strong>[Your Profession]</strong>.
+            I'm currently working as a <strong>[Your Job Role]</strong> at <strong>[Your Company]</strong>.
+            I specialize in <strong>[technologies or areas of interest]</strong> and love creating innovative solutions.
         </p>
     </section>
 
     <!-- Education Section -->
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li><strong>[Degree, e.g. B.S. in Computer Science]</strong> – [University Name], [Years Attended]</li>
-            <li>Relevant Coursework: [Course1, Course2, Course3]</li>
-            <br>
-            <li><strong>[Degree or Certification]</strong> – [Another University/School], [Years Attended]</li>
-            <li>Relevant Coursework: [Course1, Course2, Course3]</li>
+    <section id="education" class="mb-12 p-8 bg-white rounded-lg shadow-md animate-fade-in-up">
+        <h2 class="text-3xl font-semibold text-blue-600 mb-4">Education</h2>
+        <ul class="list-none">
+            <li class="mb-4">
+                <strong class="text-xl">[Degree, e.g. B.S. in Computer Science]</strong>
+                <p class="text-sm text-gray-600">[University Name], [Years Attended]</p>
+                <p>Relevant Coursework: [Course1, Course2, Course3]</p>
+            </li>
+            <li class="mb-4">
+                <strong class="text-xl">[Degree or Certification]</strong>
+                <p class="text-sm text-gray-600">[Another University/School], [Years Attended]</p>
+                <p>Relevant Coursework: [Course1, Course2, Course3]</p>
+            </li>
         </ul>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div>
-            <h3>Project 1: [Project Name]</h3>
-            <p>[Brief description of the project. Technologies used: HTML, CSS, JavaScript, etc.]</p>
-            <p class="project-links">
-                <a href="https://github.com/your-username/project1" target="_blank">GitHub Repo</a> | 
-                <a href="https://your-project-link.com" target="_blank">Live Demo</a>
+    <section id="projects" class="mb-12 p-8 bg-white rounded-lg shadow-md animate-fade-in-up">
+        <h2 class="text-3xl font-semibold text-blue-600 mb-4">Projects</h2>
+
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold">Project 1: [Project Name]</h3>
+            <p class="mt-2">[Brief description of the project. Technologies used: HTML, CSS, JavaScript, etc.]</p>
+            <p class="mt-4">
+                <a href="https://github.com/your-username/project1" target="_blank" class="text-blue-600 hover:text-blue-800 underline">GitHub Repo</a> | 
+                <a href="https://your-project-link.com" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Live Demo</a>
             </p>
         </div>
-        <br>
+
         <div>
-            <h3>Project 2: [Project Name]</h3>
-            <p>[Brief description of the project. Technologies used: HTML, CSS, Python, etc.]</p>
-            <p class="project-links">
-                <a href="https://github.com/your-username/project2" target="_blank">GitHub Repo</a> | 
-                <a href="https://your-project-link.com" target="_blank">Live Demo</a>
+            <h3 class="text-xl font-semibold">Project 2: [Project Name]</h3>
+            <p class="mt-2">[Brief description of the project. Technologies used: HTML, CSS, Python, etc.]</p>
+            <p class="mt-4">
+                <a href="https://github.com/your-username/project2" target="_blank" class="text-blue-600 hover:text-blue-800 underline">GitHub Repo</a> | 
+                <a href="https://your-project-link.com" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Live Demo</a>
             </p>
         </div>
     </section>
 
     <!-- Resume Section -->
-    <section id="resume">
-        <h2>Resume</h2>
-        <p>You can view or download my resume <a href="resume.pdf" target="_blank">here</a>.</p>
+    <section id="resume" class="mb-12 p-8 bg-white rounded-lg shadow-md animate-fade-in-up">
+        <h2 class="text-3xl font-semibold text-blue-600 mb-4">Resume</h2>
+        <p>You can view or download my resume <a href="resume.pdf" target="_blank" class="text-blue-600 hover:text-blue-800 underline">here</a>.</p>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/your-username" target="_blank">your-username</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank">Your LinkedIn</a></p>
+    <section id="contact" class="mb-12 p-8 bg-white rounded-lg shadow-md animate-fade-in-up">
+        <h2 class="text-3xl font-semibold text-blue-600 mb-4">Contact</h2>
+        <p>Email: <a href="mailto:your-email@example.com" class="text-blue-600 hover:text-blue-800 underline">your-email@example.com</a></p>
+        <p>GitHub: <a href="https://github.com/your-username" target="_blank" class="text-blue-600 hover:text-blue-800 underline">your-username</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="text-blue-600 hover:text-blue-800 underline">Your LinkedIn</a></p>
     </section>
+
 </div>
 
-<footer>
+<!-- Footer -->
+<footer class="bg-blue-600 text-white py-6 mt-10 text-center">
     <p>Connect with me on:</p>
-    <div class="social-icons">
-        <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+    <div class="flex justify-center space-x-6 my-4">
+        <a href="https://github.com/your-username" target="_blank"><i class="fab fa-github text-2xl"></i></a>
+        <a href="https://linkedin.com/in/your-profile" target="_blank"><i class="fab fa-linkedin text-2xl"></i></a>
+        <a href="mailto:your-email@example.com"><i class="fas fa-envelope text-2xl"></i></a>
     </div>
     <p>&copy; 2024 [Your Name]</p>
 </footer>
 
 </body>
 </html>
+
 
 
