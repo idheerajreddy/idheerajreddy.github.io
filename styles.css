@@ -23,6 +23,9 @@
     --accent-tertiary: #7c3aed;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --shadow-hover: rgba(0, 0, 0, 0.15);
+    --hero-bg: linear-gradient(to bottom right, #f8fafc, #dbeafe, #e0e7ff);
+    --achievement-bg: linear-gradient(to bottom right, #eff6ff, #e0e7ff);
+    --quick-action-bg: linear-gradient(to bottom right, #f8fafc, #dbeafe);
 }
 
 [data-theme="dark"] {
@@ -42,6 +45,9 @@
     --accent-tertiary: #8b5cf6;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --shadow-hover: rgba(0, 0, 0, 0.4);
+    --hero-bg: linear-gradient(to bottom right, #0f172a, #1e293b, #334155);
+    --achievement-bg: linear-gradient(to bottom right, #1e293b, #334155);
+    --quick-action-bg: linear-gradient(to bottom right, #1e293b, #334155);
 }
 
 /* Base Styles */
@@ -56,9 +62,46 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Navigation Styles */
+nav {
+    background-color: var(--bg-primary);
+    border-color: var(--border-color);
+}
+
+.nav-link {
+    @apply transition-colors duration-300 font-medium relative;
+    color: var(--text-secondary);
+}
+
+.nav-link:hover {
+    color: var(--accent-primary);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.relative.min-h-screen {
+    background: var(--hero-bg);
+}
+
 /* Dark Mode Toggle Button */
 .dark-mode-btn {
-    @apply relative w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden;
+    @apply relative w-12 h-12 rounded-full backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
 }
 
 .dark-mode-btn:hover {
@@ -77,10 +120,6 @@ body {
 .dark-mode-btn .fa-moon {
     opacity: 0;
     transform: translateY(100%);
-}
-
-[data-theme="dark"] .dark-mode-btn {
-    @apply bg-gray-800/80 border-gray-600;
 }
 
 [data-theme="dark"] .dark-mode-btn .fa-sun {
@@ -176,7 +215,7 @@ body {
 }
 
 .btn-secondary {
-    @apply bg-white/80 backdrop-blur-sm text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200 inline-flex items-center;
+    @apply px-8 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border inline-flex items-center;
     background-color: var(--bg-card);
     color: var(--text-primary);
     border-color: var(--border-color);
@@ -198,7 +237,7 @@ body {
 
 /* Stats */
 .stat-item {
-    @apply text-center p-4 rounded-xl bg-white/60 backdrop-blur-sm shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300;
+    @apply text-center p-4 rounded-xl shadow-lg border transition-all duration-300;
     background-color: var(--bg-card);
     border-color: var(--border-color);
 }
@@ -265,9 +304,14 @@ body {
 
 /* Achievement Cards */
 .achievement-card {
-    @apply text-center p-4 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/20;
+    @apply text-center p-4 rounded-xl shadow-lg border transition-all duration-300;
     background-color: var(--bg-card);
     border-color: var(--border-color);
+}
+
+.achievement-card:hover {
+    background-color: var(--bg-card-hover);
+    transform: scale(1.05);
 }
 
 .achievement-number {
@@ -278,6 +322,11 @@ body {
 .achievement-label {
     @apply text-sm font-medium;
     color: var(--text-secondary);
+}
+
+/* Achievement Section Background */
+.bg-gradient-to-br.from-blue-50.to-indigo-50 {
+    background: var(--achievement-bg);
 }
 
 [data-theme="dark"] .achievement-card {
@@ -357,7 +406,8 @@ body {
 }
 
 .experience-header p:last-child {
-    @apply text-sm text-gray-500;
+    @apply text-sm;
+    color: var(--text-muted);
 }
 
 .experience-achievements {
@@ -403,7 +453,7 @@ body {
 
 /* Skill Categories */
 .skill-category {
-    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-105;
+    @apply rounded-2xl p-8 shadow-xl border transition-all duration-300 transform hover:scale-105;
     background-color: var(--bg-card);
     border-color: var(--border-color);
 }
@@ -462,7 +512,7 @@ body {
 }
 
 .cert-card {
-    @apply bg-white/60 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300;
+    @apply rounded-xl p-4 flex items-center gap-3 shadow-lg border transition-all duration-300;
     background-color: var(--bg-card);
     border-color: var(--border-color);
 }
@@ -486,7 +536,7 @@ body {
 
 /* Education Cards */
 .education-card {
-    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+    @apply rounded-2xl p-8 shadow-xl border transition-all duration-300 transform hover:scale-[1.02];
     background-color: var(--bg-card);
     border-color: var(--border-color);
 }
@@ -538,7 +588,7 @@ body {
 
 /* Project Cards */
 .project-card {
-    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+    @apply rounded-2xl p-8 shadow-xl border transition-all duration-300 transform hover:scale-[1.02];
     background-color: var(--bg-card);
     border-color: var(--border-color);
 }
@@ -584,7 +634,7 @@ body {
 }
 
 .project-link-disabled {
-    @apply bg-gray-300 text-gray-600 px-4 py-2 rounded-lg font-medium cursor-not-allowed inline-flex items-center;
+    @apply px-4 py-2 rounded-lg font-medium cursor-not-allowed inline-flex items-center;
     background-color: var(--bg-tertiary);
     color: var(--text-muted);
 }
@@ -606,7 +656,7 @@ body {
 
 /* Contact Section */
 .contact-item {
-    @apply flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition-all duration-300;
+    @apply flex items-start gap-4 p-4 rounded-xl transition-all duration-300;
     background-color: var(--bg-card);
 }
 
@@ -658,6 +708,11 @@ body {
 
 [data-theme="dark"] .quick-action-btn:hover {
     background-color: var(--bg-card-hover);
+}
+
+/* Quick Actions Background */
+.bg-gradient-to-br.from-slate-50.to-blue-50 {
+    background: var(--quick-action-bg);
 }
 
 /* Footer Social Links */
