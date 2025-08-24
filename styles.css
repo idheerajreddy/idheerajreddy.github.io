@@ -3,7 +3,46 @@
 @tailwind utilities;
 
 /* Custom Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* CSS Custom Properties for Theme Switching */
+:root {
+    /* Light Theme Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --accent-primary: #2563eb;
+    --accent-secondary: #4f46e5;
+    --accent-tertiary: #7c3aed;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+    /* Dark Theme Colors */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-card: #1e293b;
+    --bg-card-hover: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --border-hover: #475569;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #6366f1;
+    --accent-tertiary: #8b5cf6;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+}
 
 /* Base Styles */
 * {
@@ -12,11 +51,56 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-btn {
+    @apply relative w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden;
+}
+
+.dark-mode-btn:hover {
+    @apply scale-105;
+}
+
+.dark-mode-btn i {
+    @apply absolute inset-0 flex items-center justify-center transition-all duration-300;
+}
+
+.dark-mode-btn .fa-sun {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dark-mode-btn .fa-moon {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+[data-theme="dark"] .dark-mode-btn {
+    @apply bg-gray-800/80 border-gray-600;
+}
+
+[data-theme="dark"] .dark-mode-btn .fa-sun {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+[data-theme="dark"] .dark-mode-btn .fa-moon {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Navigation Styles */
 .nav-link {
     @apply text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative;
+    color: var(--text-secondary);
+}
+
+.nav-link:hover {
+    color: var(--accent-primary);
 }
 
 .nav-link::after {
@@ -26,7 +110,7 @@ body {
     height: 2px;
     bottom: -4px;
     left: 0;
-    background: linear-gradient(to right, #2563eb, #4f46e5);
+    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
     transition: width 0.3s ease;
 }
 
@@ -34,11 +118,19 @@ body {
     width: 100%;
 }
 
+[data-theme="dark"] .nav-link {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: var(--accent-primary);
+}
+
 /* Hero Section */
 .typing-text {
     display: inline-block;
     overflow: hidden;
-    border-right: 2px solid #2563eb;
+    border-right: 2px solid var(--accent-primary);
     white-space: nowrap;
     animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
@@ -54,7 +146,7 @@ body {
 
 @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: #2563eb; }
+    50% { border-color: var(--accent-primary); }
 }
 
 @keyframes blink {
@@ -69,77 +161,244 @@ body {
 
 .btn-secondary {
     @apply bg-white/80 backdrop-blur-sm text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200 inline-flex items-center;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
 }
 
-/* Social Links */
-.social-link {
-    @apply text-gray-600 hover:text-blue-600 transform hover:scale-110 transition-all duration-300 p-3 rounded-full hover:bg-white/20;
+.btn-secondary:hover {
+    background-color: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .btn-secondary {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background-color: var(--bg-card-hover);
+}
+
+/* Stats */
+.stat-item {
+    @apply text-center p-4 rounded-xl bg-white/60 backdrop-blur-sm shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.stat-item:hover {
+    box-shadow: 0 20px 25px -5px var(--shadow-hover);
+}
+
+[data-theme="dark"] .stat-item {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
 }
 
 /* Section Titles */
 .section-title {
-    @apply text-4xl md:text-5xl font-bold text-gray-800 mb-4;
+    @apply text-4xl md:text-5xl font-bold mb-4;
+    color: var(--text-primary);
 }
 
-/* Stat Cards */
-.stat-card {
-    @apply bg-white/60 backdrop-blur-sm rounded-xl p-6 text-center shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:scale-105;
+/* About Cards */
+.about-card {
+    @apply flex items-start gap-4 p-6 rounded-2xl bg-white/60 backdrop-blur-sm shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
 }
 
-/* Experience Cards */
-.experience-card {
-    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+.about-card:hover {
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 20px 25px -5px var(--shadow-hover);
+}
+
+.about-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
+}
+
+[data-theme="dark"] .about-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .about-card:hover {
+    background-color: var(--bg-card-hover);
+}
+
+/* Achievement Cards */
+.achievement-card {
+    @apply text-center p-4 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg border border-white/20;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.achievement-number {
+    @apply text-3xl font-bold mb-2;
+    color: var(--accent-primary);
+}
+
+.achievement-label {
+    @apply text-sm font-medium;
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .achievement-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+/* Experience Timeline */
+.experience-timeline {
+    @apply relative flex items-start gap-8;
+}
+
+.timeline-dot {
+    @apply w-4 h-4 rounded-full shadow-lg flex-shrink-0;
+}
+
+.experience-content {
+    @apply flex-1 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.experience-content:hover {
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 25px 50px -12px var(--shadow-hover);
+}
+
+.company-badge {
+    @apply w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
 }
 
 .experience-header {
     @apply flex items-start gap-6 mb-6;
 }
 
-.company-logo {
-    @apply w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
+.experience-header h3 {
+    color: var(--text-primary);
 }
 
-.experience-title h3 {
-    @apply text-xl font-bold text-gray-800 mb-2;
+.experience-header p {
+    color: var(--text-secondary);
 }
 
-.experience-content ul {
-    @apply space-y-3 text-gray-700;
+.experience-achievements {
+    @apply space-y-4;
 }
 
-.experience-content li {
-    @apply flex items-start;
+.achievement-item {
+    @apply flex items-start gap-3;
+}
+
+.achievement-item span {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .experience-content {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .experience-content:hover {
+    background-color: var(--bg-card-hover);
 }
 
 /* Skill Categories */
 .skill-category {
     @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-105;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.skill-category:hover {
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 25px 50px -12px var(--shadow-hover);
 }
 
 .skill-header {
     @apply text-center mb-6;
 }
 
-.skill-tags {
+.skill-icon {
+    @apply w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg;
+}
+
+.skill-header h3 {
+    color: var(--text-primary);
+}
+
+.skill-grid {
     @apply flex flex-wrap gap-2 justify-center;
 }
 
 .skill-tag {
-    @apply bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium border border-blue-200 hover:from-blue-200 hover:to-indigo-200 transition-all duration-300;
+    @apply px-4 py-2 rounded-full text-sm font-medium border transition-all duration-300;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
 }
 
-/* Certification Cards */
-.certification-cards {
+.skill-tag:hover {
+    background-color: var(--bg-card-hover);
+    border-color: var(--border-hover);
+}
+
+[data-theme="dark"] .skill-category {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .skill-category:hover {
+    background-color: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .skill-tag {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+/* Certification Grid */
+.certification-grid {
     @apply space-y-4;
 }
 
 .cert-card {
     @apply bg-white/60 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300;
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.cert-card:hover {
+    background-color: var(--bg-card-hover);
+}
+
+.cert-card span {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .cert-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .cert-card:hover {
+    background-color: var(--bg-card-hover);
 }
 
 /* Education Cards */
 .education-card {
     @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.education-card:hover {
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 25px 50px -12px var(--shadow-hover);
 }
 
 .education-header {
@@ -150,21 +409,48 @@ body {
     @apply w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
 }
 
-.education-content h4 {
-    @apply font-semibold text-gray-700 mb-2;
+.education-header h3 {
+    color: var(--text-primary);
 }
 
-.coursework-tags {
+.education-header p {
+    color: var(--text-secondary);
+}
+
+.education-content h4 {
+    color: var(--text-primary);
+}
+
+.coursework-grid {
     @apply flex flex-wrap gap-2;
 }
 
 .coursework-tag {
-    @apply bg-gradient-to-r from-green-100 to-teal-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium border border-green-200;
+    @apply px-3 py-1 rounded-full text-sm font-medium border;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .education-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .education-card:hover {
+    background-color: var(--bg-card-hover);
 }
 
 /* Project Cards */
 .project-card {
     @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+.project-card:hover {
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 25px 50px -12px var(--shadow-hover);
 }
 
 .project-header {
@@ -175,12 +461,23 @@ body {
     @apply w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
 }
 
+.project-header h3 {
+    color: var(--text-primary);
+}
+
+.project-card p {
+    color: var(--text-secondary);
+}
+
 .project-tech {
     @apply flex flex-wrap gap-2 mb-4;
 }
 
 .tech-tag {
-    @apply bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium border border-orange-200;
+    @apply px-3 py-1 rounded-full text-sm font-medium border;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
 }
 
 .project-links {
@@ -193,15 +490,79 @@ body {
 
 .project-link-disabled {
     @apply bg-gray-300 text-gray-600 px-4 py-2 rounded-lg font-medium cursor-not-allowed inline-flex items-center;
+    background-color: var(--bg-tertiary);
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .project-card {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .project-card:hover {
+    background-color: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .tech-tag {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
 }
 
 /* Contact Section */
 .contact-item {
     @apply flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition-all duration-300;
+    background-color: var(--bg-card);
+}
+
+.contact-item:hover {
+    background-color: var(--bg-card-hover);
+}
+
+.contact-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
+}
+
+.contact-item p {
+    color: var(--text-primary);
+}
+
+.contact-item a {
+    color: var(--accent-primary);
+}
+
+.contact-item a:hover {
+    color: var(--accent-secondary);
 }
 
 .quick-action-btn {
-    @apply block w-full bg-white/60 backdrop-blur-sm text-gray-800 px-4 py-3 rounded-lg font-medium hover:bg-white transition-all duration-300 text-center border border-gray-200 hover:shadow-lg;
+    @apply block w-full px-4 py-3 rounded-lg font-medium text-center border transition-all duration-300;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.quick-action-btn:hover {
+    background-color: var(--bg-card-hover);
+    box-shadow: 0 10px 15px -3px var(--shadow-hover);
+}
+
+[data-theme="dark"] .contact-item {
+    background-color: var(--bg-card);
+}
+
+[data-theme="dark"] .contact-item:hover {
+    background-color: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .quick-action-btn {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .quick-action-btn:hover {
+    background-color: var(--bg-card-hover);
 }
 
 /* Footer Social Links */
@@ -241,12 +602,12 @@ body {
 }
 
 /* Hover Effects */
-.experience-card:hover .company-logo {
+.experience-content:hover .company-badge {
     transform: scale(1.1);
     transition: transform 0.3s ease;
 }
 
-.skill-category:hover i {
+.skill-category:hover .skill-icon {
     transform: scale(1.1);
     transition: transform 0.3s ease;
 }
@@ -272,14 +633,14 @@ body {
         @apply flex-col items-start gap-4;
     }
     
-    .company-logo,
+    .company-badge,
     .education-icon,
     .project-icon {
         @apply w-12 h-12;
     }
     
     .skill-category,
-    .experience-card,
+    .experience-content,
     .education-card,
     .project-card {
         @apply p-6;
@@ -292,37 +653,58 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #2563eb, #4f46e5);
+    background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #1d4ed8, #4338ca);
+    background: linear-gradient(to bottom, var(--accent-secondary), var(--accent-tertiary));
 }
 
 /* Loading States */
 .loading {
-    @apply animate-pulse bg-gray-200 rounded;
+    @apply animate-pulse rounded;
+    background-color: var(--bg-tertiary);
 }
 
 /* Focus States */
 .btn-primary:focus,
 .btn-secondary:focus,
 .project-link:focus {
-    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: var(--accent-primary);
 }
 
 /* Print Styles */
 @media print {
     .nav-link,
+    .dark-mode-btn,
     .social-link,
     .btn-primary,
     .btn-secondary {
         display: none;
+    }
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] {
+    /* Hero section background */
+    .bg-gradient-to-br.from-slate-50.via-blue-50.to-indigo-50 {
+        background: linear-gradient(to bottom right, #0f172a, #1e293b, #334155);
+    }
+    
+    /* Achievement section background */
+    .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+        background: linear-gradient(to bottom right, #1e293b, #334155);
+    }
+    
+    /* Quick actions background */
+    .bg-gradient-to-br.from-slate-50.to-blue-50 {
+        background: linear-gradient(to bottom right, #1e293b, #334155);
     }
 }
   

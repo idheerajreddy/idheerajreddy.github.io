@@ -8,15 +8,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="font-['Inter'] bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen">
+<body class="font-['Inter'] bg-white text-gray-900 antialiased">
     
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200/50">
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 border-b border-gray-100 shadow-sm">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <div class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                <div class="text-2xl font-black bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent">
                     DR
                 </div>
                 <div class="hidden md:flex space-x-8">
@@ -26,8 +26,13 @@
                     <a href="#projects" class="nav-link">Projects</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
+                <!-- Dark Mode Toggle -->
+                <button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun text-yellow-500"></i>
+                    <i class="fas fa-moon text-blue-500"></i>
+                </button>
                 <div class="md:hidden">
-                    <button class="text-gray-600 hover:text-blue-600" id="mobile-menu-btn">
+                    <button class="text-gray-600 hover:text-blue-600 transition-colors" id="mobile-menu-btn">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -35,226 +40,302 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white border-t border-gray-200" id="mobile-menu">
+        <div class="md:hidden hidden bg-white border-t border-gray-100" id="mobile-menu">
             <div class="px-6 py-4 space-y-4">
-                <a href="#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
-                <a href="#experience" class="block py-2 text-gray-600 hover:text-blue-600">Experience</a>
-                <a href="#skills" class="block py-2 text-gray-600 hover:text-blue-600">Skills</a>
-                <a href="#projects" class="block py-2 text-gray-600 hover:text-blue-600">Projects</a>
-                <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+                <a href="#about" class="block py-2 text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="#experience" class="block py-2 text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
+                <a href="#skills" class="block py-2 text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
+                <a href="#projects" class="block py-2 text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
+                <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+                <!-- Mobile Dark Mode Toggle -->
+                <div class="pt-4 border-t border-gray-100">
+                    <button id="mobile-dark-mode-toggle" class="flex items-center w-full py-2 text-gray-600 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-sun text-yellow-500 mr-3"></i>
+                        <span>Toggle Dark Mode</span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-indigo-600/20 to-purple-600/20"></div>
-        <div class="absolute inset-0 bg-[url('new-bg-image.jpg')] bg-cover bg-center opacity-10"></div>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+        <!-- Geometric Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-400/20 to-indigo-400/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-300/10 to-indigo-300/10 rounded-full blur-3xl"></div>
+        </div>
         
-        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-            <div class="mb-8">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-fade-in">
-                    Dheeraj Reddy Inugala
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+            <div class="mb-12">
+                <!-- Animated Badge -->
+                <div class="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm mb-8 animate-fade-in">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                    <span class="text-sm font-medium text-gray-600">Available for opportunities</span>
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl font-black mb-8 bg-gradient-to-r from-slate-900 via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-fade-in">
+                    Dheeraj Reddy
                 </h1>
-                <div class="text-2xl md:text-3xl text-gray-700 mb-8 animate-fade-in-up">
-                    <span class="typing-text">Software Engineer</span>
+                <h2 class="text-6xl md:text-8xl font-black mb-8 bg-gradient-to-r from-slate-700 via-blue-500 to-indigo-500 bg-clip-text text-transparent animate-fade-in">
+                    Inugala
+                </h2>
+                
+                <div class="text-2xl md:text-3xl text-gray-600 mb-12 animate-fade-in-up">
+                    <span class="typing-text font-medium">Software Engineer</span>
                     <span class="typing-cursor">|</span>
                 </div>
-                <p class="text-lg md:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed animate-fade-in-up">
+                
+                <p class="text-lg md:text-xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed animate-fade-in-up">
                     Master's in Computer Science from CU Boulder • Network Automation Specialist • Full-Stack Developer • AI Enthusiast
                 </p>
             </div>
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
+            <div class="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up">
                 <a href="#contact" class="btn-primary">
-                    <i class="fas fa-envelope mr-2"></i>
+                    <i class="fas fa-envelope mr-3"></i>
                     Get In Touch
                 </a>
                 <a href="DheerajReddyI_Resume.pdf" target="_blank" class="btn-secondary">
-                    <i class="fas fa-download mr-2"></i>
+                    <i class="fas fa-download mr-3"></i>
                     Download Resume
                 </a>
             </div>
             
-            <div class="mt-16 flex justify-center space-x-6 animate-fade-in-up">
-                <a href="https://github.com/idheerajreddy" target="_blank" class="social-link">
-                    <i class="fab fa-github text-2xl"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/dheeraj-reddy-inugala-707a851b3/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin text-2xl"></i>
-                </a>
-                <a href="mailto:dheerajreddyinugala0802@gmail.com" class="social-link">
-                    <i class="fas fa-envelope text-2xl"></i>
-                </a>
+            <!-- Stats Row -->
+            <div class="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto animate-fade-in-up">
+                <div class="stat-item">
+                    <div class="text-3xl font-bold text-blue-600">50%</div>
+                    <div class="text-sm text-gray-500">Faster Setup</div>
+                </div>
+                <div class="stat-item">
+                    <div class="text-3xl font-bold text-indigo-600">40%</div>
+                    <div class="text-sm text-gray-500">Response Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="text-3xl font-bold text-purple-600">70%</div>
+                    <div class="text-sm text-gray-500">Error Reduction</div>
+                </div>
             </div>
         </div>
         
+        <!-- Scroll Indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#about" class="text-gray-600 hover:text-blue-600">
+            <a href="#about" class="text-gray-400 hover:text-blue-600 transition-colors">
                 <i class="fas fa-chevron-down text-2xl"></i>
             </a>
         </div>
     </section>
 
     <!-- Main Content -->
-    <div class="container mx-auto px-6 py-20">
+    <div class="container mx-auto px-6 py-24">
         
         <!-- About Section -->
-        <section id="about" class="mb-24">
-            <div class="text-center mb-16">
+        <section id="about" class="mb-32">
+            <div class="text-center mb-20">
                 <h2 class="section-title">About Me</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4"></div>
+                <div class="w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-6 rounded-full"></div>
             </div>
             
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/20">
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <p class="text-lg leading-relaxed text-gray-700 mb-6">
-                                I'm a passionate Software Engineer with a Master's degree in Computer Science from the University of Colorado Boulder. My journey spans impactful roles at Spectrum, Trimble, and Tata Consultancy Services.
-                            </p>
-                            <p class="text-lg leading-relaxed text-gray-700 mb-6">
-                                I've accelerated router configuration setups by 50%, developed AI-powered assistants for 3D modeling, and achieved 40% faster application response times through innovative solutions.
-                            </p>
-                            <p class="text-lg leading-relaxed text-gray-700">
-                                My expertise covers full-stack development, cloud technologies (AWS, Azure), and programming languages including Python, JavaScript, and Java. I'm passionate about leveraging cutting-edge technologies to solve complex challenges.
-                            </p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="stat-card">
-                                <div class="text-3xl font-bold text-blue-600">50%</div>
-                                <div class="text-gray-600">Faster Router Setup</div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-8">
+                        <div class="about-card">
+                            <div class="about-icon">
+                                <i class="fas fa-rocket text-2xl text-blue-600"></i>
                             </div>
-                            <div class="stat-card">
-                                <div class="text-3xl font-bold text-indigo-600">40%</div>
-                                <div class="text-gray-600">Improved Response Time</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="text-3xl font-bold text-purple-600">70%</div>
-                                <div class="text-gray-600">Reduced Config Errors</div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Passionate Problem Solver</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    I'm a Software Engineer with a Master's degree in Computer Science from the University of Colorado Boulder, passionate about leveraging cutting-edge technologies to solve complex challenges.
+                                </p>
                             </div>
                         </div>
+                        
+                        <div class="about-card">
+                            <div class="about-icon">
+                                <i class="fas fa-chart-line text-2xl text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Performance-Driven</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    My journey spans impactful roles at Spectrum, Trimble, and TCS, where I've consistently delivered measurable improvements in efficiency and performance.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="about-card">
+                            <div class="about-icon">
+                                <i class="fas fa-lightbulb text-2xl text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-3">Innovation Focused</h3>
+                                <p class="text-gray-600 leading-relaxed">
+                                    I specialize in network automation, AI integration, and cloud deployment, always eager to push the boundaries of what's possible in software engineering.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-12 shadow-2xl">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="achievement-card">
+                                    <div class="achievement-number">50%</div>
+                                    <div class="achievement-label">Faster Router Setup</div>
+                                </div>
+                                <div class="achievement-card">
+                                    <div class="achievement-number">40%</div>
+                                    <div class="achievement-label">Improved Response Time</div>
+                                </div>
+                                <div class="achievement-card">
+                                    <div class="achievement-number">70%</div>
+                                    <div class="achievement-label">Reduced Config Errors</div>
+                                </div>
+                                <div class="achievement-card">
+                                    <div class="achievement-number">200+</div>
+                                    <div class="achievement-label">Network Devices</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-2xl shadow-lg transform rotate-12"></div>
+                        <div class="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl shadow-lg transform -rotate-12"></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Work Experience Section -->
-        <section id="experience" class="mb-24">
-            <div class="text-center mb-16">
+        <section id="experience" class="mb-32">
+            <div class="text-center mb-20">
                 <h2 class="section-title">Work Experience</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4"></div>
+                <div class="w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-6 rounded-full"></div>
             </div>
             
-            <div class="max-w-6xl mx-auto space-y-8">
-                <!-- Spectrum -->
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div class="company-logo bg-gradient-to-r from-blue-600 to-indigo-600">
-                            <i class="fas fa-broadcast-tower text-white"></i>
+            <div class="max-w-7xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-indigo-200 to-purple-200"></div>
+                    
+                    <div class="space-y-16">
+                        <!-- Spectrum -->
+                        <div class="experience-timeline">
+                            <div class="timeline-dot bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+                            <div class="experience-content">
+                                <div class="experience-header">
+                                    <div class="company-badge bg-gradient-to-r from-blue-500 to-indigo-500">
+                                        <i class="fas fa-broadcast-tower text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-gray-800">Network Software Engineer</h3>
+                                        <p class="text-blue-600 font-semibold text-lg">Spectrum (Charter Communications Inc.)</p>
+                                        <p class="text-gray-500">May 2024 - Present</p>
+                                    </div>
+                                </div>
+                                <div class="experience-achievements">
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Engineered NetOps360, an enterprise-scale network platform streamlining router configuration management and health monitoring</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Implemented real-time metrics processing and automated deployments across 200+ network devices</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Achieved 70% reduction in configuration errors and 50% improvement in network operation efficiency</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="experience-title">
-                            <h3 class="text-xl font-bold text-gray-800">Network Software Engineer</h3>
-                            <p class="text-blue-600 font-medium">Spectrum (Charter Communications Inc.)</p>
-                            <p class="text-sm text-gray-500">May 2024 - Present</p>
-                        </div>
-                    </div>
-                    <div class="experience-content">
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Engineered NetOps360, an enterprise-scale network platform streamlining router configuration management and health monitoring through a user interface.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Successfully implemented the system for real-time metrics processing and automated deployments across 200+ network devices.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Achieved 70% reduction in configuration errors and 50% improvement in network operation efficiency.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Trimble -->
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div class="company-logo bg-gradient-to-r from-green-600 to-teal-600">
-                            <i class="fas fa-cube text-white"></i>
+                        <!-- Trimble -->
+                        <div class="experience-timeline">
+                            <div class="timeline-dot bg-gradient-to-r from-green-500 to-teal-500"></div>
+                            <div class="experience-content">
+                                <div class="experience-header">
+                                    <div class="company-badge bg-gradient-to-r from-green-500 to-teal-500">
+                                        <i class="fas fa-cube text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-gray-800">Software Engineer Intern</h3>
+                                        <p class="text-green-600 font-semibold text-lg">Trimble</p>
+                                        <p class="text-gray-500">Sept 2023 - May 2024</p>
+                                    </div>
+                                </div>
+                                <div class="experience-achievements">
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Engineered and implemented the frontend user interface for Trimble SketchUp AI Assistant using ReactJS</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Developed RESTful APIs using FastAPI to integrate Azure OpenAI services with efficient prompt engineering</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Achieved 85% accuracy in Ruby Code Generation through comprehensive validation and error handling</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="experience-title">
-                            <h3 class="text-xl font-bold text-gray-800">Software Engineer Intern</h3>
-                            <p class="text-green-600 font-medium">Trimble</p>
-                            <p class="text-sm text-gray-500">Sept 2023 - May 2024</p>
-                        </div>
-                    </div>
-                    <div class="experience-content">
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Engineered and implemented the frontend user interface for Trimble SketchUp AI Assistant using ReactJS.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Developed RESTful APIs using FastAPI to integrate Azure OpenAI services with efficient prompt engineering.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Achieved 85% accuracy in Ruby Code Generation through comprehensive validation and error handling.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- TCS -->
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div class="company-logo bg-gradient-to-r from-purple-600 to-pink-600">
-                            <i class="fas fa-building text-white"></i>
+                        <!-- TCS -->
+                        <div class="experience-timeline">
+                            <div class="timeline-dot bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                            <div class="experience-content">
+                                <div class="experience-header">
+                                    <div class="company-badge bg-gradient-to-r from-purple-500 to-pink-500">
+                                        <i class="fas fa-building text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-gray-800">Associate Software Engineer</h3>
+                                        <p class="text-purple-600 font-semibold text-lg">Tata Consultancy Services</p>
+                                        <p class="text-gray-500">June 2021 - June 2022</p>
+                                    </div>
+                                </div>
+                                <div class="experience-achievements">
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Optimized Equitable's flagship applications by implementing performance monitoring and identifying bottlenecks</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Achieved 25% faster response times across frontend and backend layers</span>
+                                    </div>
+                                    <div class="achievement-item">
+                                        <i class="fas fa-check-circle text-green-500"></i>
+                                        <span>Established automated deployment processes using Azure DevOps CI/CD pipeline</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="experience-title">
-                            <h3 class="text-xl font-bold text-gray-800">Associate Software Engineer</h3>
-                            <p class="text-purple-600 font-medium">Tata Consultancy Services</p>
-                            <p class="text-sm text-gray-500">June 2021 - June 2022</p>
-                        </div>
-                    </div>
-                    <div class="experience-content">
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Optimized Equitable's flagship applications by implementing performance monitoring and identifying bottlenecks.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Achieved 25% faster response times across frontend and backend layers.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-3 flex-shrink-0"></i>
-                                <span>Established automated deployment processes using Azure DevOps CI/CD pipeline.</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="mb-24">
-            <div class="text-center mb-16">
+        <section id="skills" class="mb-32">
+            <div class="text-center mb-20">
                 <h2 class="section-title">Technical Skills & Certifications</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4"></div>
+                <div class="w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-6 rounded-full"></div>
             </div>
             
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-3 gap-12">
                     <!-- Programming Languages -->
                     <div class="skill-category">
                         <div class="skill-header">
-                            <i class="fas fa-code text-3xl text-blue-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Programming Languages</h3>
+                            <div class="skill-icon bg-gradient-to-r from-blue-500 to-indigo-500">
+                                <i class="fas fa-code text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Programming Languages</h3>
                         </div>
-                        <div class="skill-tags">
+                        <div class="skill-grid">
                             <span class="skill-tag">Python</span>
                             <span class="skill-tag">JavaScript</span>
                             <span class="skill-tag">HTML</span>
@@ -267,10 +348,12 @@
                     <!-- Technologies -->
                     <div class="skill-category">
                         <div class="skill-header">
-                            <i class="fas fa-cogs text-3xl text-indigo-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Technologies</h3>
+                            <div class="skill-icon bg-gradient-to-r from-indigo-500 to-purple-500">
+                                <i class="fas fa-cogs text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Technologies</h3>
                         </div>
-                        <div class="skill-tags">
+                        <div class="skill-grid">
                             <span class="skill-tag">React.js</span>
                             <span class="skill-tag">Vue.js</span>
                             <span class="skill-tag">Django</span>
@@ -286,10 +369,12 @@
                     <!-- Certifications -->
                     <div class="skill-category">
                         <div class="skill-header">
-                            <i class="fas fa-certificate text-3xl text-purple-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-gray-800 mb-4">Certifications</h3>
+                            <div class="skill-icon bg-gradient-to-r from-purple-500 to-pink-500">
+                                <i class="fas fa-certificate text-3xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">Certifications</h3>
                         </div>
-                        <div class="certification-cards">
+                        <div class="certification-grid">
                             <div class="cert-card">
                                 <i class="fab fa-aws text-2xl text-orange-500"></i>
                                 <span class="text-sm font-medium">AWS Certified Solutions Architect</span>
@@ -305,27 +390,27 @@
         </section>
 
         <!-- Education Section -->
-        <section id="education" class="mb-24">
-            <div class="text-center mb-16">
+        <section id="education" class="mb-32">
+            <div class="text-center mb-20">
                 <h2 class="section-title">Education</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4"></div>
+                <div class="w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-6 rounded-full"></div>
             </div>
             
-            <div class="max-w-4xl mx-auto space-y-8">
+            <div class="max-w-5xl mx-auto space-y-12">
                 <div class="education-card">
                     <div class="education-header">
-                        <div class="education-icon bg-gradient-to-r from-blue-600 to-indigo-600">
-                            <i class="fas fa-graduation-cap text-white"></i>
+                        <div class="education-icon bg-gradient-to-r from-blue-500 to-indigo-500">
+                            <i class="fas fa-graduation-cap text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-gray-800">Master's in Computer Science</h3>
-                            <p class="text-blue-600 font-medium">University of Colorado Boulder</p>
-                            <p class="text-sm text-gray-500">2022 - 2024</p>
+                            <h3 class="text-2xl font-bold text-gray-800">Master's in Computer Science</h3>
+                            <p class="text-blue-600 font-semibold text-lg">University of Colorado Boulder</p>
+                            <p class="text-gray-500">2022 - 2024</p>
                         </div>
                     </div>
                     <div class="education-content">
-                        <h4 class="font-semibold text-gray-700 mb-2">Relevant Coursework:</h4>
-                        <div class="coursework-tags">
+                        <h4 class="font-semibold text-gray-700 mb-4">Relevant Coursework:</h4>
+                        <div class="coursework-grid">
                             <span class="coursework-tag">Design and Analysis of Algorithms</span>
                             <span class="coursework-tag">Natural Language Processing</span>
                             <span class="coursework-tag">Object Oriented Analysis and Design</span>
@@ -336,18 +421,18 @@
 
                 <div class="education-card">
                     <div class="education-header">
-                        <div class="education-icon bg-gradient-to-r from-green-600 to-teal-600">
-                            <i class="fas fa-university text-white"></i>
+                        <div class="education-icon bg-gradient-to-r from-green-500 to-teal-500">
+                            <i class="fas fa-university text-2xl text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-gray-800">Bachelor of Technology in Computer Science</h3>
-                            <p class="text-green-600 font-medium">Kakatiya Institute of Technology and Science</p>
-                            <p class="text-sm text-gray-500">2017 - 2021</p>
+                            <h3 class="text-2xl font-bold text-gray-800">Bachelor of Technology in Computer Science</h3>
+                            <p class="text-green-600 font-semibold text-lg">Kakatiya Institute of Technology and Science</p>
+                            <p class="text-gray-500">2017 - 2021</p>
                         </div>
                     </div>
                     <div class="education-content">
-                        <h4 class="font-semibold text-gray-700 mb-2">Relevant Coursework:</h4>
-                        <div class="coursework-tags">
+                        <h4 class="font-semibold text-gray-700 mb-4">Relevant Coursework:</h4>
+                        <div class="coursework-grid">
                             <span class="coursework-tag">Python</span>
                             <span class="coursework-tag">Java</span>
                             <span class="coursework-tag">Data Structures and Algorithms</span>
@@ -363,22 +448,22 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="mb-24">
-            <div class="text-center mb-16">
+        <section id="projects" class="mb-32">
+            <div class="text-center mb-20">
                 <h2 class="section-title">Featured Projects</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4"></div>
+                <div class="w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-6 rounded-full"></div>
             </div>
             
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12">
                     <div class="project-card">
                         <div class="project-header">
                             <div class="project-icon bg-gradient-to-r from-orange-500 to-red-500">
-                                <i class="fas fa-utensils text-white"></i>
+                                <i class="fas fa-utensils text-2xl text-white"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-800">Swiggy Clone</h3>
+                            <h3 class="text-2xl font-bold text-gray-800">Swiggy Clone</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
                             Developed a Swiggy clone by integrating live API data to replicate core functionalities, utilizing React for dynamic, reusable components.
                         </p>
                         <div class="project-tech">
@@ -397,11 +482,11 @@
                     <div class="project-card">
                         <div class="project-header">
                             <div class="project-icon bg-gradient-to-r from-blue-500 to-indigo-500">
-                                <i class="fas fa-network-wired text-white"></i>
+                                <i class="fas fa-network-wired text-2xl text-white"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-800">NetOps360 Platform</h3>
+                            <h3 class="text-2xl font-bold text-gray-800">NetOps360 Platform</h3>
                         </div>
-                        <p class="text-gray-600 mb-4">
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
                             Enterprise-scale network platform streamlining router configuration management and health monitoring through an intuitive user interface.
                         </p>
                         <div class="project-tech">
@@ -422,67 +507,71 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="mb-24">
-            <div class="text-center mb-16">
+        <section id="contact" class="mb-32">
+            <div class="text-center mb-20">
                 <h2 class="section-title">Get In Touch</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4"></div>
-                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
+                <div class="w-32 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-6 rounded-full"></div>
+                <p class="text-xl text-gray-600 mt-6 max-w-3xl mx-auto">
                     I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology and innovation.
                 </p>
             </div>
             
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-white/70 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/20">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Let's Connect</h3>
-                            <div class="space-y-4">
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope text-blue-600 text-xl"></i>
-                                    <div>
-                                        <p class="font-medium text-gray-800">Email</p>
-                                        <a href="mailto:dheerajreddyinugala0802@gmail.com" class="text-blue-600 hover:text-blue-800">
-                                            dheerajreddyinugala0802@gmail.com
-                                        </a>
-                                    </div>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <div class="space-y-8">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-8">Let's Connect</h3>
+                        <div class="space-y-6">
+                            <div class="contact-item">
+                                <div class="contact-icon bg-gradient-to-r from-blue-500 to-indigo-500">
+                                    <i class="fas fa-envelope text-white"></i>
                                 </div>
-                                <div class="contact-item">
-                                    <i class="fab fa-github text-gray-800 text-xl"></i>
-                                    <div>
-                                        <p class="font-medium text-gray-800">GitHub</p>
-                                        <a href="https://github.com/idheerajreddy" target="_blank" class="text-blue-600 hover:text-blue-800">
-                                            @idheerajreddy
-                                        </a>
-                                    </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800 text-lg">Email</p>
+                                    <a href="mailto:dheerajreddyinugala0802@gmail.com" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                        dheerajreddyinugala0802@gmail.com
+                                    </a>
                                 </div>
-                                <div class="contact-item">
-                                    <i class="fab fa-linkedin text-blue-600 text-xl"></i>
-                                    <div>
-                                        <p class="font-medium text-gray-800">LinkedIn</p>
-                                        <a href="https://www.linkedin.com/in/dheeraj-reddy-inugala-707a851b3/" target="_blank" class="text-blue-600 hover:text-blue-800">
-                                            Dheeraj Reddy Inugala
-                                        </a>
-                                    </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon bg-gradient-to-r from-gray-600 to-gray-700">
+                                    <i class="fab fa-github text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800 text-lg">GitHub</p>
+                                    <a href="https://github.com/idheerajreddy" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                        @idheerajreddy
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon bg-gradient-to-r from-blue-600 to-blue-700">
+                                    <i class="fab fa-linkedin text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800 text-lg">LinkedIn</p>
+                                    <a href="https://www.linkedin.com/in/dheeraj-reddy-inugala-707a851b3/" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
+                                        Dheeraj Reddy Inugala
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
-                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Quick Actions</h4>
-                            <div class="space-y-3">
-                                <a href="DheerajReddyI_Resume.pdf" target="_blank" class="quick-action-btn">
-                                    <i class="fas fa-download mr-2"></i>
-                                    Download Resume
-                                </a>
-                                <a href="mailto:dheerajreddyinugala0802@gmail.com" class="quick-action-btn">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    Send Email
-                                </a>
-                                <a href="https://github.com/idheerajreddy" target="_blank" class="quick-action-btn">
-                                    <i class="fab fa-github mr-2"></i>
-                                    View Projects
-                                </a>
-                            </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl p-8 shadow-xl">
+                        <h4 class="text-2xl font-bold text-gray-800 mb-6">Quick Actions</h4>
+                        <div class="space-y-4">
+                            <a href="DheerajReddyI_Resume.pdf" target="_blank" class="quick-action-btn">
+                                <i class="fas fa-download mr-3"></i>
+                                Download Resume
+                            </a>
+                            <a href="mailto:dheerajreddyinugala0802@gmail.com" class="quick-action-btn">
+                                <i class="fas fa-envelope mr-3"></i>
+                                Send Email
+                            </a>
+                            <a href="https://github.com/idheerajreddy" target="_blank" class="quick-action-btn">
+                                <i class="fab fa-github mr-3"></i>
+                                View Projects
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -491,24 +580,24 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 text-white py-12">
+    <footer class="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white py-16">
         <div class="container mx-auto px-6 text-center">
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold mb-4">Dheeraj Reddy Inugala</h3>
-                <p class="text-gray-300 max-w-md mx-auto">
+            <div class="mb-12">
+                <h3 class="text-3xl font-bold mb-6">Dheeraj Reddy Inugala</h3>
+                <p class="text-gray-300 max-w-2xl mx-auto text-lg">
                     Passionate about creating innovative solutions and pushing the boundaries of technology.
                 </p>
             </div>
             
-            <div class="flex justify-center space-x-6 mb-8">
+            <div class="flex justify-center space-x-8 mb-12">
                 <a href="https://github.com/idheerajreddy" target="_blank" class="footer-social-link">
-                    <i class="fab fa-github text-xl"></i>
+                    <i class="fab fa-github text-2xl"></i>
                 </a>
                 <a href="https://www.linkedin.com/in/dheeraj-reddy-inugala-707a851b3/" target="_blank" class="footer-social-link">
-                    <i class="fab fa-linkedin text-xl"></i>
+                    <i class="fab fa-linkedin text-2xl"></i>
                 </a>
                 <a href="mailto:dheerajreddyinugala0802@gmail.com" class="footer-social-link">
-                    <i class="fas fa-envelope text-xl"></i>
+                    <i class="fas fa-envelope text-2xl"></i>
                 </a>
             </div>
             

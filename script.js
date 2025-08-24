@@ -17,6 +17,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Dark Mode Toggle Functionality
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const mobileDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
+    
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Update toggle button state
+    function updateToggleState(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+    
+    // Toggle theme function
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        updateToggleState(newTheme);
+        
+        // Add smooth transition effect
+        document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 300);
+    }
+    
+    // Add event listeners for both toggle buttons
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleTheme);
+    }
+    
+    if (mobileDarkModeToggle) {
+        mobileDarkModeToggle.addEventListener('click', toggleTheme);
+    }
+    
     // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
@@ -125,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Experience cards timeline effect
-    const experienceCards = document.querySelectorAll('.experience-card');
+    const experienceCards = document.querySelectorAll('.experience-content');
     experienceCards.forEach((card, index) => {
         card.style.animationDelay = `${index * 0.2}s`;
     });
@@ -295,3 +336,36 @@ function handleSwipe() {
         }
     }
 }
+
+// Theme preference detection and system preference sync
+function detectSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+    }
+    return 'light';
+}
+
+// Listen for system theme changes
+if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+            // Only auto-switch if user hasn't manually set a preference
+            const newTheme = e.matches ? 'dark' : 'light';
+            updateToggleState(newTheme);
+        }
+    });
+}
+
+// Initialize theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if user has a saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+        // Use system preference as default
+        const systemTheme = detectSystemTheme();
+        document.documentElement.setAttribute('data-theme', systemTheme);
+        localStorage.setItem('theme', systemTheme);
+    }
+});
