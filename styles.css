@@ -1,0 +1,328 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Base Styles */
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Navigation Styles */
+.nav-link {
+    @apply text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: linear-gradient(to right, #2563eb, #4f46e5);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid #2563eb;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+.typing-cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #2563eb; }
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Buttons */
+.btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center;
+}
+
+.btn-secondary {
+    @apply bg-white/80 backdrop-blur-sm text-gray-800 px-8 py-3 rounded-full font-semibold hover:bg-white transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border border-gray-200 inline-flex items-center;
+}
+
+/* Social Links */
+.social-link {
+    @apply text-gray-600 hover:text-blue-600 transform hover:scale-110 transition-all duration-300 p-3 rounded-full hover:bg-white/20;
+}
+
+/* Section Titles */
+.section-title {
+    @apply text-4xl md:text-5xl font-bold text-gray-800 mb-4;
+}
+
+/* Stat Cards */
+.stat-card {
+    @apply bg-white/60 backdrop-blur-sm rounded-xl p-6 text-center shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 transform hover:scale-105;
+}
+
+/* Experience Cards */
+.experience-card {
+    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+}
+
+.experience-header {
+    @apply flex items-start gap-6 mb-6;
+}
+
+.company-logo {
+    @apply w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
+}
+
+.experience-title h3 {
+    @apply text-xl font-bold text-gray-800 mb-2;
+}
+
+.experience-content ul {
+    @apply space-y-3 text-gray-700;
+}
+
+.experience-content li {
+    @apply flex items-start;
+}
+
+/* Skill Categories */
+.skill-category {
+    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-105;
+}
+
+.skill-header {
+    @apply text-center mb-6;
+}
+
+.skill-tags {
+    @apply flex flex-wrap gap-2 justify-center;
+}
+
+.skill-tag {
+    @apply bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium border border-blue-200 hover:from-blue-200 hover:to-indigo-200 transition-all duration-300;
+}
+
+/* Certification Cards */
+.certification-cards {
+    @apply space-y-4;
+}
+
+.cert-card {
+    @apply bg-white/60 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300;
+}
+
+/* Education Cards */
+.education-card {
+    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+}
+
+.education-header {
+    @apply flex items-start gap-6 mb-6;
+}
+
+.education-icon {
+    @apply w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
+}
+
+.education-content h4 {
+    @apply font-semibold text-gray-700 mb-2;
+}
+
+.coursework-tags {
+    @apply flex flex-wrap gap-2;
+}
+
+.coursework-tag {
+    @apply bg-gradient-to-r from-green-100 to-teal-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium border border-green-200;
+}
+
+/* Project Cards */
+.project-card {
+    @apply bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02];
+}
+
+.project-header {
+    @apply flex items-center gap-4 mb-6;
+}
+
+.project-icon {
+    @apply w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
+}
+
+.project-tech {
+    @apply flex flex-wrap gap-2 mb-4;
+}
+
+.tech-tag {
+    @apply bg-gradient-to-r from-orange-100 to-red-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium border border-orange-200;
+}
+
+.project-links {
+    @apply flex gap-4;
+}
+
+.project-link {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 inline-flex items-center;
+}
+
+.project-link-disabled {
+    @apply bg-gray-300 text-gray-600 px-4 py-2 rounded-lg font-medium cursor-not-allowed inline-flex items-center;
+}
+
+/* Contact Section */
+.contact-item {
+    @apply flex items-start gap-4 p-4 rounded-xl hover:bg-white/50 transition-all duration-300;
+}
+
+.quick-action-btn {
+    @apply block w-full bg-white/60 backdrop-blur-sm text-gray-800 px-4 py-3 rounded-lg font-medium hover:bg-white transition-all duration-300 text-center border border-gray-200 hover:shadow-lg;
+}
+
+/* Footer Social Links */
+.footer-social-link {
+    @apply text-gray-400 hover:text-white transform hover:scale-110 transition-all duration-300 p-3 rounded-full hover:bg-white/10;
+}
+
+/* Animations */
+@keyframes fade-in {
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px);
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 1.5s ease-out;
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 1.5s ease-out;
+}
+
+/* Hover Effects */
+.experience-card:hover .company-logo {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-category:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.education-card:hover .education-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-title {
+        @apply text-3xl;
+    }
+    
+    .experience-header,
+    .education-header {
+        @apply flex-col items-start gap-4;
+    }
+    
+    .company-logo,
+    .education-icon,
+    .project-icon {
+        @apply w-12 h-12;
+    }
+    
+    .skill-category,
+    .experience-card,
+    .education-card,
+    .project-card {
+        @apply p-6;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #2563eb, #4f46e5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #1d4ed8, #4338ca);
+}
+
+/* Loading States */
+.loading {
+    @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Focus States */
+.btn-primary:focus,
+.btn-secondary:focus,
+.project-link:focus {
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Print Styles */
+@media print {
+    .nav-link,
+    .social-link,
+    .btn-primary,
+    .btn-secondary {
+        display: none;
+    }
+}
+  
