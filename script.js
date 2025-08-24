@@ -1,5 +1,53 @@
+// Global functions for theme management
+function updateToggleState(theme) {
+    if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    updateToggleState(newTheme);
+    
+    // Add smooth transition effect
+    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    setTimeout(() => {
+        document.body.style.transition = '';
+    }, 300);
+}
+
+// Theme preference detection and system preference sync
+function detectSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+    }
+    return 'light';
+}
+
+// Initialize theme on page load
+function initializeTheme() {
+    // Check if user has a saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+        // Use system preference as default
+        const systemTheme = detectSystemTheme();
+        document.documentElement.setAttribute('data-theme', systemTheme);
+        localStorage.setItem('theme', systemTheme);
+    }
+}
+
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize theme first
+    initializeTheme();
+    
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -20,34 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dark Mode Toggle Functionality
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const mobileDarkModeToggle = document.getElementById('mobile-dark-mode-toggle');
-    
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    
-    // Update toggle button state
-    function updateToggleState(theme) {
-        if (theme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        }
-    }
-    
-    // Toggle theme function
-    function toggleTheme() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        updateToggleState(newTheme);
-        
-        // Add smooth transition effect
-        document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-        setTimeout(() => {
-            document.body.style.transition = '';
-        }, 300);
-    }
     
     // Add event listeners for both toggle buttons
     if (darkModeToggle) {
@@ -337,14 +357,6 @@ function handleSwipe() {
     }
 }
 
-// Theme preference detection and system preference sync
-function detectSystemTheme() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-    }
-    return 'light';
-}
-
 // Listen for system theme changes
 if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
@@ -355,17 +367,3 @@ if (window.matchMedia) {
         }
     });
 }
-
-// Initialize theme on page load
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if user has a saved preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-        // Use system preference as default
-        const systemTheme = detectSystemTheme();
-        document.documentElement.setAttribute('data-theme', systemTheme);
-        localStorage.setItem('theme', systemTheme);
-    }
-});

@@ -133,25 +133,41 @@ body {
     border-right: 2px solid var(--accent-primary);
     white-space: nowrap;
     animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    min-height: 1.2em;
 }
 
 .typing-cursor {
     animation: blink 1s infinite;
+    margin-left: 2px;
 }
 
 @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+    from { 
+        width: 0; 
+        opacity: 0;
+    }
+    to { 
+        width: 100%; 
+        opacity: 1;
+    }
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: var(--accent-primary); }
+    from, to { 
+        border-color: transparent; 
+    }
+    50% { 
+        border-color: var(--accent-primary); 
+    }
 }
 
 @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+    0%, 50% { 
+        opacity: 1; 
+    }
+    51%, 100% { 
+        opacity: 0; 
+    }
 }
 
 /* Buttons */
@@ -204,7 +220,7 @@ body {
 
 /* About Cards */
 .about-card {
-    @apply flex items-start gap-4 p-6 rounded-2xl bg-white/60 backdrop-blur-sm shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300;
+    @apply flex items-start gap-4 p-6 rounded-2xl shadow-lg border transition-all duration-300 cursor-pointer;
     background-color: var(--bg-card);
     border-color: var(--border-color);
 }
@@ -212,10 +228,26 @@ body {
 .about-card:hover {
     background-color: var(--bg-card-hover);
     box-shadow: 0 20px 25px -5px var(--shadow-hover);
+    transform: translateY(-4px);
 }
 
 .about-icon {
-    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg;
+    @apply w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg transition-all duration-300;
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-card));
+}
+
+.about-card:hover .about-icon {
+    box-shadow: 0 10px 15px -3px var(--shadow-hover);
+}
+
+.about-card h3 {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.about-card p {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
 }
 
 [data-theme="dark"] .about-card {
@@ -225,6 +257,10 @@ body {
 
 [data-theme="dark"] .about-card:hover {
     background-color: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .about-icon {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-card));
 }
 
 /* Achievement Cards */
@@ -255,18 +291,51 @@ body {
 }
 
 .timeline-dot {
-    @apply w-4 h-4 rounded-full shadow-lg flex-shrink-0;
+    @apply w-4 h-4 rounded-full shadow-lg flex-shrink-0 mt-8;
+    position: relative;
+    z-index: 10;
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: inherit;
+    opacity: 0.3;
 }
 
 .experience-content {
-    @apply flex-1 bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300;
+    @apply flex-1 rounded-2xl p-8 shadow-xl border transition-all duration-300;
     background-color: var(--bg-card);
     border-color: var(--border-color);
+    position: relative;
+}
+
+.experience-content::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 24px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid var(--bg-card);
 }
 
 .experience-content:hover {
     background-color: var(--bg-card-hover);
     box-shadow: 0 25px 50px -12px var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.experience-content:hover::before {
+    border-right-color: var(--bg-card-hover);
 }
 
 .company-badge {
@@ -279,10 +348,16 @@ body {
 
 .experience-header h3 {
     color: var(--text-primary);
+    @apply text-2xl font-bold mb-2;
 }
 
 .experience-header p {
     color: var(--text-secondary);
+    @apply text-lg font-semibold mb-1;
+}
+
+.experience-header p:last-child {
+    @apply text-sm text-gray-500;
 }
 
 .experience-achievements {
@@ -290,11 +365,23 @@ body {
 }
 
 .achievement-item {
-    @apply flex items-start gap-3;
+    @apply flex items-start gap-3 p-3 rounded-lg transition-all duration-200;
+    background-color: var(--bg-tertiary);
+}
+
+.achievement-item:hover {
+    background-color: var(--bg-card-hover);
+    transform: translateX(4px);
+}
+
+.achievement-item i {
+    @apply mt-1 flex-shrink-0;
+    color: #10b981;
 }
 
 .achievement-item span {
     color: var(--text-secondary);
+    @apply leading-relaxed;
 }
 
 [data-theme="dark"] .experience-content {
@@ -303,6 +390,14 @@ body {
 }
 
 [data-theme="dark"] .experience-content:hover {
+    background-color: var(--bg-card-hover);
+}
+
+[data-theme="dark"] .achievement-item {
+    background-color: var(--bg-tertiary);
+}
+
+[data-theme="dark"] .achievement-item:hover {
     background-color: var(--bg-card-hover);
 }
 
